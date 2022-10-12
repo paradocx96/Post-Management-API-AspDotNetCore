@@ -1,6 +1,13 @@
+using PostWebAPI.Models;
+using PostWebAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<PostDatabaseSettings>(
+    builder.Configuration.GetSection("PostDatabaseSettings"));
+
+builder.Services.AddSingleton<PostService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
